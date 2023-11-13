@@ -5,7 +5,7 @@ Feature: Login
   Scenario: Successful Login
     When the user enters a valid credentials
          | email | password     |
-         | davideslava9522@gmail.com | prueba123! |
+         | e2e@thesoftwaredesigncompany.com | Contraseña123# |
     And the user clicks the login button
     Then the user should be redirected to the dashboard
 

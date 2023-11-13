@@ -24,7 +24,7 @@ module.exports = defineConfig({
   e2e: {
     setupNodeEvents,
     specPattern: "cypress/e2e/features/*.feature",
-    baseUrl: "http://localhost:2368/ghost/#/signin",
+    baseUrl: "http://localhost:2368/ghost/",
     chromeWebSecurity: false,
     env: {
       allureReuseAfterSpec: true,
