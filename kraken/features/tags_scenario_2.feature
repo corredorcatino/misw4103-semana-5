@@ -1,7 +1,7 @@
 Feature: My feature
 
 @user1 @web
-Scenario: An existing user can create a tag
+Scenario: An existing user can create an internal tag
   Given I navigate to page "http://localhost:2368/ghost/#/signin"
   And I wait for 3 seconds
   When I enter email "<USERNAME>"
@@ -16,7 +16,7 @@ Scenario: An existing user can create a tag
   And I wait for 2 seconds
   And I click on the redact tag name
   And I wait for 2 seconds
-  And I enter text "Tag name test scenario 1"
+  And I enter text "#Tag name test scenario 2 internal"
   And I wait for 2 seconds
   And I click on the redact tag description
   And I wait for 2 seconds
@@ -26,6 +26,8 @@ Scenario: An existing user can create a tag
   And I wait for 2 seconds
   And I navigate to page "http://localhost:2368/ghost/#/tags"
   And I wait for 4 seconds
+  And I click on internal tags
+  And I wait for 2 seconds
   And I click on user settings
   And I wait for 2 seconds
   And I click on sign out

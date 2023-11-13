@@ -145,9 +145,24 @@ When('I click on the redact tag description', async function () {
   return await element.click();
 });
 
+Then('I click on internal tags', async function () {
+  let element = await this.driver.$("button[data-test-tags-nav='internal']");
+  return await element.click();
+});
+
 Then('I click on save', async function () {
   let element = await this.driver.$("button[data-test-button='save']");
   return await element.click();
 });
 
+Then('I click on a created tag', async function () {
+  let element = await this.driver.$('.content-list').$('ol').$('.gh-list-row.gh-tags-list-item');
+  let tagElement = element.$("a[href='#/tags/tag-name-test-scenario-3/']");
+  return await tagElement.click();
+});
+
+Then('I edit the description {string}', async function (str) {
+  let element = await this.driver.$('#tag-description');
+  return await element.setValue(str);
+});
 
