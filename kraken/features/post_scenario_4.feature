@@ -25,6 +25,7 @@ Scenario: An existing user can edit a post title and published
   And I click on continue
   And I wait for 2 seconds
   And I click on publish post
+  And I wait for 2 seconds
   And I navigate to page "http://localhost:2368/ghost/#/posts?type=published"
   And I wait for 2 seconds
   And I click on status post
