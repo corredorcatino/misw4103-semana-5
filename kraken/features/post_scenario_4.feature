@@ -1,7 +1,7 @@
 Feature: My feature
 
 @user1 @web
-Scenario: An existing user can delete a published post
+Scenario: An existing user can edit a post title and published
   Given I navigate to page "http://localhost:2368/ghost/#/signin"
   And I wait for 3 seconds
   When I enter email "<USERNAME>"
@@ -14,7 +14,7 @@ Scenario: An existing user can delete a published post
   And I wait for 2 seconds
   And I click on the redact post title
   And I wait for 2 seconds
-  And I enter text "Post title test scenario 2"
+  And I enter text "Post to edit title test"
   And I wait for 2 seconds
   And I click on the redact post body
   And I wait for 2 seconds
@@ -25,17 +25,23 @@ Scenario: An existing user can delete a published post
   And I click on continue
   And I wait for 2 seconds
   And I click on publish post
-  And I wait for 2 seconds
-  And I see a meesage with published post
-  And I wait for 2 seconds
   And I navigate to page "http://localhost:2368/ghost/#/posts?type=published"
   And I wait for 2 seconds
   And I click on status post
   And I wait for 2 seconds
+  And I click on the redact post title
+  And I wait for 2 seconds
+  And I edit the title "Edit post title test"
+  And I wait for 2 seconds
+  And I click on update
+  And I wait for 2 seconds
   And I click on settings
   And I wait for 2 seconds
-  And I click on delete post
+  And I click on view link
   And I wait for 2 seconds
   And I navigate to page "http://localhost:2368/ghost/#/dashboard"
   And I wait for 2 seconds
+  And I click on user settings
+  And I wait for 2 seconds
   And I click on sign out
+  And I wait for 3 seconds

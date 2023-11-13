@@ -1,7 +1,7 @@
 Feature: My feature
 
 @user1 @web
-Scenario: An existing user can create a pos with draft status
+Scenario: An existing user can create a post with draft status
   Given I navigate to page "http://localhost:2368/ghost/#/signin"
   And I wait for 3 seconds
   When I enter email "<USERNAME>"
@@ -25,3 +25,10 @@ Scenario: An existing user can create a pos with draft status
   And I click on status post
   And I wait for 2 seconds
   And I see a post with the title of previous post
+  And I wait for 2 seconds
+  And I navigate to page "http://localhost:2368/ghost/#/dashboard"
+  And I wait for 2 seconds
+  And I click on user settings
+  And I wait for 2 seconds
+  And I click on sign out
+  And I wait for 3 seconds

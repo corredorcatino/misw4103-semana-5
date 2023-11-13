@@ -9,6 +9,8 @@ const { Given, When, Then } = require('@cucumber/cucumber');
 //   return element.click();
 // }
 
+// login
+
 When('I enter email {kraken-string}', async function (email) {
   let element = await this.driver.$('#identification');
   return await element.setValue(email);
@@ -24,9 +26,19 @@ When('I click next', async function () {
   return await element.click();
 });
 
-When('I login {kraken-string} {kraken-string}', async function (username, password) {
-  await Login(username, password, this.driver);
+// Logout
+
+Then('I click on user settings', async function () {
+  let element = await this.driver.$('.ember-view.ember-basic-dropdown-trigger');
+  return await element.click();
 });
+
+Then('I click on sign out', async function () {
+  let element = await this.driver.$('.user-menu-signout');
+  return await element.click();
+});
+
+// post scenarios
 
 When('I click new post', async function () {
   let element = await this.driver.$('.gh-nav-new-post');
@@ -85,9 +97,57 @@ Then('I click on confirm delete post', async function () {
   return await element.click();
 });
 
+Then ('I click on update', async function () {
+  let element = await this.driver.$('.gh-btn.gh-btn-editor.gh-editor-save-trigger');
+  return await element.click();
+})
+
 Then('I see a post with the title of previous post', async function () {
   let element = await this.driver.$('.gh-editor-title.ember-text-area.gh-input.ember-view');
   let elementTitle = await element.getValue();
-  return await postMessage.includes('Post title draft test');
+  return await elementTitle.includes('Post title draft test');
 });
+
+Then('I click on post url', async function () {
+  let element = await this.driver.$('#url');
+  return await element.click();
+});
+
+Then('I click on view link', async function () {
+  let element = await this.driver.$('.post-view-link');
+  return await element.click();
+});
+
+Then('I edit post url {string}', async function (str) {
+  let element = await this.driver.$('#url');
+  return await element.setValue(str);
+});
+
+Then('I edit the title {string}', async function (str) {
+  let element = await this.driver.$('.gh-editor-title');
+  return await element.setValue(str);
+});
+
+// Tags scenarios
+
+When('I click new tag', async function () {
+  let element = await this.driver.$("a[href='#/tags/new/']");
+  return await element.click();
+});
+
+When('I click on the redact tag name', async function () {
+  let element = await this.driver.$('#tag-name');
+  return await element.click();
+});
+
+When('I click on the redact tag description', async function () {
+  let element = await this.driver.$('#tag-description');
+  return await element.click();
+});
+
+Then('I click on save', async function () {
+  let element = await this.driver.$("button[data-test-button='save']");
+  return await element.click();
+});
+
 

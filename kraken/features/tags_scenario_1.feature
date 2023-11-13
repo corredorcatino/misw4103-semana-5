@@ -1,7 +1,7 @@
 Feature: My feature
 
 @user1 @web
-Scenario: An existing user can create a post
+Scenario: An existing user can create a tag
   Given I navigate to page "http://localhost:2368/ghost/#/signin"
   And I wait for 3 seconds
   When I enter email "<USERNAME>"
@@ -10,24 +10,23 @@ Scenario: An existing user can create a post
   And I wait for 2 seconds
   And I click next
   And I wait for 3 seconds
-  And I click new post
+  And I navigate to page "http://localhost:2368/ghost/#/tags"
   And I wait for 2 seconds
-  And I click on the redact post title
+  And I click new tag
   And I wait for 2 seconds
-  And I enter text "Post title test scenario 1"
+  And I click on the redact tag name
   And I wait for 2 seconds
-  And I click on the redact post body
+  And I enter text "Tag name test scenario 1"
   And I wait for 2 seconds
-  And I enter text "Post body test"
+  And I click on the redact tag description
   And I wait for 2 seconds
-  Then I click on publish
+  And I enter text "Tag description test"
   And I wait for 2 seconds
-  And I click on continue
+  Then I click on save
   And I wait for 2 seconds
-  And I click on publish post
+  And I navigate to page "http://localhost:2368/ghost/#/tags"
   And I wait for 2 seconds
-  And I see a meesage with published post
-  And I wait for 2 seconds
-  And I navigate to page "http://localhost:2368/ghost/#/dashboard"
+  And I click on user settings
   And I wait for 2 seconds
   And I click on sign out
+  And I wait for 3 seconds
