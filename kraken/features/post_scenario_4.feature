@@ -6,7 +6,7 @@ Scenario: An existing user can edit a post title and published
   And I wait for 3 seconds
   When I enter email "<USERNAME>"
   And I wait for 2 seconds
-  When I enter password "<PASSWORD>"
+  And I enter password "<PASSWORD>"
   And I wait for 2 seconds
   And I click next
   And I wait for 3 seconds

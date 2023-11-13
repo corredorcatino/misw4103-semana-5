@@ -1,14 +1,5 @@
 const { Given, When, Then } = require('@cucumber/cucumber');
 
-// function Login(username, password, driver) {
-//   let usernameInput = driver.$('#identification');
-//   let passwordInput = driver.$('#password');
-//   let element = driver.$('.login');
-//   usernameInput.setValue(username);
-//   passwordInput.setValue(password);
-//   return element.click();
-// }
-
 // login
 
 When('I enter email {kraken-string}', async function (email) {
@@ -157,12 +148,27 @@ Then('I click on save', async function () {
 
 Then('I click on a created tag', async function () {
   let element = await this.driver.$('.content-list').$('ol').$('.gh-list-row.gh-tags-list-item');
-  let tagElement = element.$("a[href='#/tags/tag-name-test-scenario-3/']");
+  let tagElement = await element.$('a');
   return await tagElement.click();
 });
 
 Then('I edit the description {string}', async function (str) {
   let element = await this.driver.$('#tag-description');
   return await element.setValue(str);
+});
+
+Then('I can see a list of tags', async function () {
+  let element = await this.driver.$('.gh-list-row.gh-tags-list-item');
+  return await element;
+});
+
+Then('I can delete a tag', async function () {
+  let element = await this.driver.$("button[data-test-button='delete-tag']");
+  return await element.click();
+});
+
+Then('I confirm delete a tag', async function () {
+  let element = await this.driver.$("button[data-test-button='confirm']");
+  return await element.click();
 });
 
