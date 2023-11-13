@@ -3,7 +3,7 @@ Feature: Admin User Settings
   Background:
     Given the administrator is logged in
       | email | password     |
-      | davideslava9522@gmail.com | prueba123! |
+      | e2e@thesoftwaredesigncompany.com | Contraseña123# |
     When the user is on the Settings page
    
 
