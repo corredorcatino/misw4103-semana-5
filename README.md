@@ -10,14 +10,30 @@
 
 ## Cypress
 
-- Entrar a la carpeta cypress
-- Ejecutar `npm install`
-- Ejecutar `npx cypress open --e2e --browser chrome`
+- Entrar a la carpeta `cypress-installation`
+- Ejecutar
+    ```shell
+    npm install
+    ```
+- Ejecutar
+    ```shell
+    npx cypress open --e2e --browser chrome
+    ```
+    o también
+    ```shell
+    npm run cypress:runner
+    ```
 
 ## Kraken
 
-- Entrar a la carpeta kraken
-- Ejecutar `npm install``
-- Ejecutar `./node_modules/kraken-node/bin/kraken-node run`
+- Entrar a la carpeta `kraken`
+- Ejecutar
+    ```shell
+    npm install
+    ```
+- Ejecutar 
+    ```shell
+    ./node_modules/kraken-node/bin/kraken-node run
+    ```
 
 
