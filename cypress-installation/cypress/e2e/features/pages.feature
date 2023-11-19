@@ -3,7 +3,7 @@ Feature: Page
   Background:
     Given A web browser is at the login page
 
-  Scenario: List Pages
+  Scenario: user navigates to "pages" page
     When the user enters a valid credentials
       | email                            | password       |
       | e2e@thesoftwaredesigncompany.com | Contraseña123# |
@@ -32,7 +32,7 @@ Feature: Page
     And the new page is published
 
 
-  Scenario: user edits one page's content
+  Scenario: user edits a new page's content
     When the user enters a valid credentials
       | email                            | password       |
       | e2e@thesoftwaredesigncompany.com | Contraseña123# |
@@ -171,6 +171,10 @@ Feature: Page
     And user deletes all the following amount of pages
       | no-of-pages |
       | 6           |
+    # as some pages are created with faker data, we cannot check their names
+    # by feeding them into this data table... hence the difference in no#
+    # pages and checked pages. Also, the about page will be there since it's
+    # created by default when installing ghost.
     Then these pages must not exist
       | page-title       |
       | Test page 01     |
