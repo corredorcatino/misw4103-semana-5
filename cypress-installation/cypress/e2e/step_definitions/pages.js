@@ -1,4 +1,4 @@
-import {When, Then, defineStep} from '@badeball/cypress-cucumber-preprocessor';
+import {When, Then} from '@badeball/cypress-cucumber-preprocessor';
 import {pageListPage} from '../../pages/PageList';
 import {pageEditorPage} from '../../pages/PageEditor';
 import {faker} from '@faker-js/faker'

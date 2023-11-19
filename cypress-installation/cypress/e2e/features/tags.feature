@@ -205,7 +205,7 @@ Feature: Tags
     But tag is not saved
 
 
-  Scenario: user fills the data to create a tag but doesnt save it and goes to tags page
+  Scenario: user fills the data to create a tag but doesnt save it and goes to dashboard page
 
     When user clicks on new tag
     And user fills tag name and description
@@ -213,6 +213,23 @@ Feature: Tags
       | onyx     | 000000    | Onyx tag    |
     But user goes to dashboard page
     Then stay or leave dialog must appear
+    And user clicks on leave button
+    And user is now in dashboard page
+
+
+  Scenario: user fills the data to create a tag and saves it after trying to navigate to dashboard
+
+    When user clicks on new tag
+    And user fills tag name and description
+      | tag-name       | tag-color | description                                             |
+      | beautiful-onyx | 000000    | Onyx is one of the greatest materials on this universe! |
+    But user goes to dashboard page
+    Then stay or leave dialog must appear
+    And user clicks on stay button
+    And clicks on save the new tag, returns to the tags page
+    And the new tags should be listed in the tags page
+      | tag-name       | description                                             |
+      | beautiful-onyx | Onyx is one of the greatest materials on this universe! |
 
 
   Scenario: user fills the data to create a tag and tries goes to view tag
@@ -234,3 +251,11 @@ Feature: Tags
       | tag-name | tag-color | description        |
       |          | 000000    | Beautiful Onyx tag |
     But tag is not saved
+
+
+  Scenario: user deletes a tag created with a leave page attempt
+
+    When deleting these tags
+      | tag-name       | description                                             |
+      | beautiful-onyx | Onyx is one of the greatest materials on this universe! |
+    Then those tags should not be displayed in the tags page

@@ -151,3 +151,16 @@ When(/^user goes to view tag$/, (table) => {
 Then(/^page not found$/, () => {
     cy.contains('404');
 });
+
+Then(/^user clicks on leave button$/, () => {
+    cy.get('button[data-test-leave-button=""][class="gh-btn gh-btn-red"]').click();
+});
+
+Then(/^user is now in dashboard page$/, () => {
+    cy.contains('Dashboard');
+    cy.contains('Welcome to your Dashboard');
+});
+
+Then(/^user clicks on stay button$/, () => {
+    cy.get('button[data-test-stay-button=""][class="gh-btn"]').click();
+});
