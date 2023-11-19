@@ -1,6 +1,6 @@
 import { Given, When, Then, } from "@badeball/cypress-cucumber-preprocessor";
-import { loginPage } from '@pages/LoginPage'
-import { dashboardPage } from '@pages/DashboardPage'
+import { loginPage } from '../../pages/LoginPage'
+import { dashboardPage } from '../../pages/DashboardPage'
 
 
 Given("A web browser is at the login page", () => {

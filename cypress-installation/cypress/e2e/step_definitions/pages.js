@@ -1,6 +1,6 @@
 import { Given, When, Then, defineStep } from "@badeball/cypress-cucumber-preprocessor";
-import { pageListPage } from "@pages/PageList";
-import { pageEditorPage } from "@pages/PageEditor";
+import { pageListPage } from "../../pages/PageList";
+import { pageEditorPage } from "../../pages/PageEditor";
 import { faker } from '@faker-js/faker'
 
 defineStep("the pages list is loaded", () => {

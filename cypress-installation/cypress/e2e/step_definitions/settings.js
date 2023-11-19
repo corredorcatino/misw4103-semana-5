@@ -3,8 +3,8 @@ import {
     When,
     Then,
   } from "@badeball/cypress-cucumber-preprocessor";
-  import {settingspage} from '@pages/SettingsPage'
-  import {loginPage} from '@pages/LoginPage'
+  import {settingspage} from '../../pages/SettingsPage'
+  import {loginPage} from '../../pages/LoginPage'
 
   Given("the administrator is logged in", (table) => {
     table.hashes().forEach((row) => {

@@ -10,9 +10,19 @@
 
 ## Cypress
 
-- Entrar a la carpeta cypress
-- Ejecutar `npm install`
-- Ejecutar `npx cypress open --e2e --browser chrome`
+- Entrar a la carpeta `cypress-installation`
+- Ejecutar
+    ```shell
+    npm install
+    ```
+- Ejecutar
+    ```shell
+    npx cypress open --e2e --browser chrome
+    ```
+    o también
+    ```shell
+    npm run cypress:runner
+    ```
 
 ## Kraken
 
@@ -26,5 +36,3 @@
 - Al interior del proyecto de kraken navegar hasta el archivo `kraken/features/web/step_definitions/step.js`
 - En la línea 3 hay una constante que se llama versión, por favor define la versión que elegiste previamente `const version = "v5.0.0"` Esto permitira organizar los screenshots de las pruebas.
 - Para correr los test `./node_modules/kraken-node/bin/kraken-node run`
-
-

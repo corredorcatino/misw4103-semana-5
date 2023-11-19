@@ -2,7 +2,7 @@ Feature: Tags
 
   Background:
     Given user is logged in and is in tags page
-      | username                    | password     |
+      | username                         | password       |
       | e2e@thesoftwaredesigncompany.com | Contraseña123# |
 
   Scenario: user creates a new tag
