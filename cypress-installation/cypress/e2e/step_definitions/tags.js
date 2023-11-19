@@ -8,7 +8,6 @@ import {Given, When, Then} from "@badeball/cypress-cucumber-preprocessor";
 Given('user is logged in and is in tags page', (table) => {
     table.hashes().forEach((row) => {
         cy.visit('http://localhost:2368/ghost/');
-        cy.contains('Nigg Men');
 
         cy.get('#identification').type(row['username']);
         cy.get('#password').type(row['password']);

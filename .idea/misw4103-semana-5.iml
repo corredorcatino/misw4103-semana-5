@@ -3,7 +3,7 @@
   <component name="TemplatesService">
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$/node_modules/multiple-cucumber-html-reporter/templates" />
+        <option value="$MODULE_DIR$/cypress-installation/node_modules/multiple-cucumber-html-reporter/templates" />
       </list>
     </option>
   </component>
