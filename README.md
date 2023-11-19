@@ -10,8 +10,8 @@
 
 # Credenciales al inicializar el proyecto
 
-|:--------------------------------:|:--------------:|
 | username                         | password       |
+|:--------------------------------:|:--------------:|
 | e2e@thesoftwaredesigncompany.com | Contraseña123# |
 
 ## Cypress
