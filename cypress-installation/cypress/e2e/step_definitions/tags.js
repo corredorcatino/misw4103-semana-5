@@ -24,14 +24,25 @@ Given('user is logged in and is in tags page', (table) => {
     });
 });
 
+When('user goes to tags page', () => {
+    cy.get('a[href="#/tags/"]').click();
+
+    cy.contains('Tags');
+    cy.contains('Public tags');
+    cy.contains('Internal tags');
+    cy.contains('New tag');
+});
+
 When('user clicks on new tag', (table) => {
     cy.get('a[href="#/tags/new/"]').click();
 });
 
 When('user fills tag name and description', (table) => {
     table.hashes().forEach((row) => {
-        cy.get('#tag-name').type(row['tag-name']);
-        cy.get('input[placeholder="15171A"]').type('456456');
+        if (row['tag-name']) {
+            cy.get('#tag-name').type(row['tag-name']);
+        }
+        cy.get('input[placeholder="15171A"]').type(row['tag-color']);
         cy.get('#tag-description').type(row['description']);
     });
 });
@@ -50,7 +61,7 @@ When('clicks on save the new tag, returns to the internal tags page, switches ba
     cy.get('button[data-test-tags-nav="public"][type="button"]').click();
 });
 
-Then('the new tag should be listed in the tags page', (table) => {
+Then('the new tag(s) should be listed in the tags page', (table) => {
     table.hashes().forEach((row) => {
         cy.contains(row['tag-name']);
         cy.contains(row['description']);
@@ -84,10 +95,14 @@ When('user click on edit a tag', (table) => {
 When('changes the description of the tag, saves it, switches back to tags', (table) => {
     table.hashes().forEach((row) => {
         cy.contains(row['tag-name']);
-        cy.get('#tag-description').clear().type(row['edited-description']);
+        cy.get('textarea[name="description"]').clear().type(row['edited-description']);
         cy.get('button[data-test-button="save"]').click();
         cy.get('a[href="#/tags/"][data-test-nav="tags"]').click();
     });
+});
+
+When('user goes to dashboard page', () => {
+    cy.get('a[title="Dashboard"][href="#/dashboard/"]').click();
 });
 
 When('staying in the tags page', () => {
@@ -115,4 +130,37 @@ When('deleting these tags', (table) => {
 When('those tags should not be displayed in the tags page', () => {
     cy.get('p[data-test-tag-name=""]').should('not.exist');
     cy.get('p[data-test-tag-description=""]').should('not.exist');
+});
+
+Then(/^stay or leave dialog must appear$/, () => {
+    cy.contains('Are you sure you want to leave this page?');
+});
+
+When(/^tag is not saved$/, () => {
+    cy.get('button[data-test-button="save"]').click();
+
+    cy.contains('Retry');
+});
+
+When(/^user goes to view tag$/, (table) => {
+    table.hashes().forEach((row) => {
+        cy.visit('http://localhost:2368/tag/' + row['tag-name'], {failOnStatusCode: false});
+    });
+});
+
+Then(/^page not found$/, () => {
+    cy.contains('404');
+});
+
+Then(/^user clicks on leave button$/, () => {
+    cy.get('button[data-test-leave-button=""][class="gh-btn gh-btn-red"]').click();
+});
+
+Then(/^user is now in dashboard page$/, () => {
+    cy.contains('Dashboard');
+    cy.contains('Welcome to your Dashboard');
+});
+
+Then(/^user clicks on stay button$/, () => {
+    cy.get('button[data-test-stay-button=""][class="gh-btn"]').click();
 });

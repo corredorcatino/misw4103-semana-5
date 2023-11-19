@@ -7,7 +7,8 @@ class PageEditorPage {
         pageContent: () => cy.get('.kg-prose'),
         publishBtn: () => cy.get('[data-test-button="publish-flow"]'),
         continueBtn: () => cy.get('[data-test-button="continue"]'),
-        confirmPublishBtn: () => cy.get('[data-test-button="confirm-publish"]')
+        confirmPublishBtn: () => cy.get('[data-test-button="confirm-publish"]'),
+        updateButton: () => cy.get('[data-test-button="publish-save"]'),
     };
 
     typeNewPageTitle(newPageTitle) {
@@ -28,6 +29,10 @@ class PageEditorPage {
 
     clickConfirmPublishButton() {
         this.elements.confirmPublishBtn().click();
+    }
+
+    clickUpdatePageButton() {
+        this.elements.updateButton().click();
     }
 }
 
