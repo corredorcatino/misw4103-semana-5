@@ -22,10 +22,12 @@ Given('user is logged in and is posts page', (table) => {
         cy.contains('All posts');
         cy.contains('New post');
     });
+    cy.screenshot({timeout: 1_000});
 });
 
 When('user clicks on create new post', () => {
     cy.get('a[class="ember-view gh-btn gh-btn-primary"][data-test-new-post-button=""]').click();
+    cy.screenshot({timeout: 1_000});
 });
 
 Then('user fills post info with', (table) => {
@@ -33,6 +35,7 @@ Then('user fills post info with', (table) => {
         cy.get('textarea[data-test-editor-title-input=""]').type(row['post-title']).blur();
         // cy.get('p[data-koenig-dnd-droppable="true"]').type(row['post-content']);
     });
+    cy.screenshot({timeout: 1_000});
 });
 
 When(/^clicks on publish the new post, publishes it, returns to the posts page$/, () => {
@@ -41,18 +44,21 @@ When(/^clicks on publish the new post, publishes it, returns to the posts page$/
     cy.get('button[data-test-button="confirm-publish"]').click();
     cy.get('button[data-test-button="back-to-editor"]').click();
     cy.get('a[data-test-link="posts"]').click();
+    cy.screenshot({timeout: 1_000});
 });
 
 Then(/^the new post should be listed in the posts page$/, (table) => {
     table.hashes().forEach((row) => {
         cy.contains(row['post-title']);
     });
+    cy.screenshot({timeout: 1_000});
 });
 
 When(/^staying in posts page$/, () => {
     cy.contains('Posts');
     cy.contains('All posts');
     cy.contains('New post');
+    cy.screenshot({timeout: 1_000});
 });
 
 // s? IS A REGEX DO NOT CHANGE
@@ -60,6 +66,7 @@ Then(/^user should see the following posts?$/, (table) => {
     table.hashes().forEach((row) => {
         cy.contains(row['post-title']);
     });
+    cy.screenshot({timeout: 1_000});
 });
 
 When(/^user edits the post title to$/, (table) => {
@@ -68,15 +75,18 @@ When(/^user edits the post title to$/, (table) => {
 
         cy.get('textarea[data-test-editor-title-input=""]').clear().type(row['new-post-title']);
     });
+    cy.screenshot({timeout: 1_000});
 });
 
 When(/^returns to the posts page$/, () => {
     cy.get('a[data-test-link="posts"]').click();
+    cy.screenshot({timeout: 1_000});
 });
 
 When(/^clicks on update the new post, publishes it, returns to the posts page$/, () => {
     cy.get('button[data-test-button="publish-save"]').click();
     cy.get('a[data-test-link="posts"]').click();
+    cy.screenshot({timeout: 1_000});
 });
 
 Then(/^user deletes the posts?$/, (table) => {
@@ -98,6 +108,7 @@ Then(/^user deletes the posts?$/, (table) => {
 
         cy.wait(1_000);
     });
+    cy.screenshot({timeout: 1_000});
 });
 
 Then(/^user edits the post url to$/, (table) => {
@@ -109,7 +120,12 @@ Then(/^user edits the post url to$/, (table) => {
 
         cy.get('input[id="url"][name="post-setting-slug"]').type(row['new-post-url']).blur();
     });
+    cy.screenshot({timeout: 1_000});
 });
-Then(/^user goes to new url to check the url works$/, function () {
 
+Then(/^user goes to new url to check the url works$/, (table) => {
+    table.hashes().forEach((row) => {
+        cy.visit({url: 'localhost:2368/about/'+row['url'], failOnStatusCode: false});
+    });
+    cy.screenshot({timeout: 1_000});
 });

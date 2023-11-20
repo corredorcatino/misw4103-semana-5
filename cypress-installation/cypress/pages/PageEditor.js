@@ -16,7 +16,7 @@ class PageEditorPage {
     }
 
     typeNewPageContent() {
-        this.elements.pageContent().type(faker.lorem.paragraphs({min:1, max:3}));
+        this.elements.pageContent().type(faker.lorem.paragraphs({min:1, max:3}), {force: true});
     }
 
     clickPublishButton() {
