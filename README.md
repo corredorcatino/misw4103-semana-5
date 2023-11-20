@@ -8,6 +8,12 @@
 # Pre-requisitos
 - Node.js >= 18
 
+# Credenciales al inicializar el proyecto
+
+| username                         | password       |
+|:--------------------------------:|:--------------:|
+| e2e@thesoftwaredesigncompany.com | Contraseña123# |
+
 ## Cypress
 
 - Entrar a la carpeta `cypress-installation`
