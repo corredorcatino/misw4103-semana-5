@@ -8,7 +8,8 @@
 # Pre-requisitos
 - Node.js >= 18
 
-# Credenciales al inicializar el proyecto
+# Instrucciones
+Inicializar ghost con las siguientes credenciales, el nombre del sitio no interesa.
 
 | username                         | password       |
 |:--------------------------------:|:--------------:|
@@ -16,11 +17,14 @@
 
 ## Cypress
 
+### Setup cypress
 - Entrar a la carpeta `cypress-installation`
 - Ejecutar
     ```shell
     npm install
     ```
+
+### Iniciar cypress
 - Ejecutar
     ```shell
     npx cypress open --e2e --browser chrome
@@ -29,6 +33,27 @@
     ```shell
     npm run cypress:runner
     ```
+
+### Ejecutar tests sobre GHOST desplegado en docker
+#### Para GHOST 5.68.0
+Se ha de traer ghost arriba con el siguiente comando (comprobado para fedora linux)
+
+    docker run -d --name some-ghost -e NODE_ENV=development -e url=http://localhost:2368 -p 2368:2368 ghost:5.68.0
+
+Al momento de ejecutar nuestros tests para GHOST 5.68.0 lo podemos conseguir
+mediante la ejecución de todos los tests excepto `tags_v5_0.js` ya que estos escenarios
+no son compatibles con 5.68.
+
+#### Para GHOST 5.0.0
+se ha de traer ghost arriba con el siguiente comando (comprobado para fedora linux)
+
+    docker run -d -e url=http://localhost:2368 -p 2368:2368 --name ghost_5.0.0 ghost:5.0.0
+
+El cual nos ayudara a traer GHOST ghost:5.0.0
+
+Para ejecutar los escenarios de GHOST 5.0.0 ejecutamos el archivo `tags_v5_0.js`, este
+contiene +10 casos a ser ejecutados.
+
 
 ## Kraken
 
